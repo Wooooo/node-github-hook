@@ -166,6 +166,11 @@ function serverHandler(req, res) {
 
     self.logger.log(Util.format(req.method, req.url, remoteAddress));
 
+    // health check by hello
+    if (url === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
+        return reply(200, res);
+    }
+
     // 404 if the path is wrong
     if (!self.checkUrl(url)) {
         self.logger.error(Util.format('got invalid path from %s, returning 404', remoteAddress));
