@@ -167,7 +167,7 @@ function serverHandler(req, res) {
     self.logger.log(Util.format(req.method, req.url, remoteAddress));
 
     // health check by hello
-    if (url === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
+    if (url.pathname === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
         res.writeHead(200);
         res.end('hello');
         return;
