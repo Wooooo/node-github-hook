@@ -170,6 +170,7 @@ function serverHandler(req, res) {
     if (url.pathname === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
         res.writeHead(200);
         res.end('hello');
+        failed = true; // fake fail for preventing in 'end' event
         return;
     }
 
