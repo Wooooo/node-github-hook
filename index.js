@@ -168,7 +168,9 @@ function serverHandler(req, res) {
 
     // health check by hello
     if (url === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
-        return reply(200, res);
+        res.writeHead(200);
+        res.end('hello');
+        return;
     }
 
     // 404 if the path is wrong
