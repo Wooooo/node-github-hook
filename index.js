@@ -164,7 +164,9 @@ function serverHandler(req, res) {
         });
     });
 
+    if(url.pathname !== '/hello') {
     self.logger.log(Util.format(req.method, req.url, remoteAddress));
+    }
 
     // health check by hello
     if (url.pathname === '/hello' && (req.method === 'GET' || req.method === 'HEAD')) {
